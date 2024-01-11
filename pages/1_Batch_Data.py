@@ -30,14 +30,14 @@ def main():
         """
     st.markdown(title_style, unsafe_allow_html=True)
 
-    # hide_menu_style = """
-    #                    <style>
-    #                    #MainMenu {visibility: hidden;}
-    #                    .stApp [data-testid="stToolbar"]{display:none;}
-    #                    footer {visibility:hidden}
-    #                    </style>
-    #                    """
-    # st.markdown(hide_menu_style, unsafe_allow_html=True)
+    hide_menu_style = """
+                       <style>
+                       #MainMenu {visibility: hidden;}
+                       .stApp [data-testid="stToolbar"]{display:none;}
+                       footer {visibility:hidden}
+                       </style>
+                       """
+    st.markdown(hide_menu_style, unsafe_allow_html=True)
 
     st.markdown("<h1 class='title'>Batch Data Transcription <span style='color:#b3cee5'>&#x1F4BB;</span>&#x1F4D3;</h1>",
                 unsafe_allow_html=True)
