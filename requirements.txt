@@ -3,5 +3,5 @@ matplotlib==3.8.2
 numpy==1.22.3
 PyAudio==0.2.11
 pydub==0.25.1
-streamlit==1.8.1
+streamlit==1.30.0
 streamlit_extras==0.3.6
