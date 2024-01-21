@@ -83,15 +83,15 @@ def main():
         switch_page(option)
 
 
-    # hiding hamburger menu while execution
-    hide_menu_style = """
-                   <style>
-                   #MainMenu {visibility: hidden;}
-                   .stApp [data-testid="stToolbar"]{display:none;}
-                   footer {visibility:hidden}
-                   </style>
-                   """
-    st.markdown(hide_menu_style, unsafe_allow_html=True)
+    # # hiding hamburger menu while execution
+    # hide_menu_style = """
+    #                <style>
+    #                #MainMenu {visibility: hidden;}
+    #                .stApp [data-testid="stToolbar"]{display:none;}
+    #                footer {visibility:hidden}
+    #                </style>
+    #                """
+    # st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 
 # calling main function
