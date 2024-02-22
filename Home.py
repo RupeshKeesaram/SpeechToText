@@ -1,6 +1,15 @@
 import streamlit as st
 import streamlit_extras.add_vertical_space as avs
 from streamlit_extras.switch_page_button import switch_page
+from utilities.record_audio import connect
+import assemblyai as aai
+from private_keys import ASSEMBLY_AI_KEY
+from bokeh.models.widgets import Button
+from bokeh.models import CustomJS
+from streamlit_bokeh_events import streamlit_bokeh_events
+
+# setting api key for assembly ai
+aai.settings.api_key = ASSEMBLY_AI_KEY
 
 
 # configuring home page
@@ -71,6 +80,19 @@ using = """
 st.markdown(using, unsafe_allow_html=True)
 avs.add_vertical_space(2)
 
+record = st.button("Click Me To Record")
+transcriber = ""
+if record:
+    transcriber = connect()
+    transcriber.connect()
+    microphone_stream = aai.extras.MicrophoneStream(sample_rate=16_000)
+    transcriber.stream(microphone_stream)
+    transcriber.close()
+
+    # if microphone_stream :
+    #     st.chat_message(transcriber.stream(microphone_stream))
+
+
 
 # main function
 def main():
@@ -92,7 +114,6 @@ def main():
     #                </style>
     #                """
     # st.markdown(hide_menu_style, unsafe_allow_html=True)
-
 
 # calling main function
 main()

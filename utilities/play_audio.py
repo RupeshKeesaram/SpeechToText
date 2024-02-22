@@ -17,6 +17,13 @@ def play_wav_file(file):
     # creating a pyaudio object
     p = pa.PyAudio()
 
+    # print("Available devices:\n")
+    # for i in range(0, p.get_device_count()):
+    #     info = p.get_device_info_by_index(i)
+    #     print(str(info["index"]) + ": \t %s \n \t %s \n" % (
+    #     info["name"], p.get_host_api_info_by_index(info["hostApi"])["name"]))
+    #     pass
+
     # creating a output stream
     stream = p.open(format=p.get_format_from_width(file_obj.getsampwidth()),
                     channels=file_obj.getnchannels(),

@@ -95,14 +95,11 @@ def main():
         BASE_PATH = "../SpeechToText"
         file_path = ""
 
-        # creating a directory if not exists
-        if "data" not in os.listdir(BASE_PATH):
-            os.mkdir("data")
-        else:
-            # removing all the files if directory already exits
-            for file in os.listdir("data"):
-                file_path = os.path.join("data", file)
-                os.remove(file_path)
+
+        # removing all the files if directory already exits
+        for file in os.listdir("data"):
+            file_path = os.path.join("data", file)
+            os.remove(file_path)
 
         if uploaded_file:
             # checking the file type & saving on server
@@ -117,17 +114,24 @@ def main():
     # creating "play audio" button
     with col2:
         avs.add_vertical_space(3)
-        play_button = st.button(label="Play Audio", type="primary")
-        if play_button:
-            # throwing an error if file was not uploaded
-            if not uploaded_file:
-                error = st.error("Upload an audio file.")
-                time.sleep(1)
-                error.empty()
-            else:
-                # calling play_wav_file() to play audio file
-                with st.spinner("Playing Audio..!!"):
-                    play_wav_file(file_path)
+        if uploaded_file:
+            audio_file = open(f"data/{file_name}", 'rb')
+            audio_bytes = audio_file.read()
+            st.audio(audio_bytes, format='audio/ogg')
+            # st.audio(file_path,)
+        avs.add_vertical_space(3)
+        # play_button = st.button(label="Play Audio", type="primary")
+        # if play_button:
+        #     # throwing an error if file was not uploaded
+        #     if not uploaded_file:
+        #         error = st.error("Upload an audio file.")
+        #         time.sleep(1)
+        #         error.empty()
+        #     else:
+        #         st.audio(file_path)
+        #         # calling play_wav_file() to play audio file
+        #         with st.spinner("Playing Audio..!!"):
+        #             play_wav_file(file_path)
 
 
     # creating "transcribe audio" button
